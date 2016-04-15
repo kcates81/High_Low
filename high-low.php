@@ -2,8 +2,6 @@
 
 $randomNum = mt_rand(1, 100);
 
-var_dump($randomNum);
-
 do {
     echo "Guess a number between 1 and 100\n";
 
