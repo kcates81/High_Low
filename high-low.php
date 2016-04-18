@@ -1,15 +1,19 @@
 <?php 
 
-// this defines my function that initializes and facilitates the game 
-function gamePlay() {
+// This allows the user to set the min and max range for the random number
+    if ($argc == 3 && ctype_digit($argv[1]) && ctype_digit($argv[2])) {
+        $min = $argv[1];
+        $max = $argv[2];
 
-    // this variable generates and stores my random number 
-    $randomNum = mt_rand(1, 100);
+        $randomNum = mt_rand((int)$min, (int)$max);
+    }
+
+// this defines my function that initializes and facilitates the game 
+function gamePlay($min, $max, $randomNum) {
 
     do {
-
         // This message displays when the game starts
-        echo "Guess a number between 1 and 100\n";
+        echo "Guess a number between {$min} and {$max}\n";
 
         // This variable stores the user's guess
         $userGuess = fgets(STDIN);
@@ -38,7 +42,7 @@ function gamePlay() {
 // This do while loop actually runs the game 
 do {
     // This starts the game 
-    gamePlay();
+    gamePlay($min, $max, $randomNum);
 
     // This stores the user's answer to whether or not they want to play again
     $playAgain = fgets(STDIN);
